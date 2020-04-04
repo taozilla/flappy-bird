@@ -117,6 +117,7 @@ function PlayState:update(dt)
             sounds['music']:pause()
             sounds['pause']:play()
         else
+            -- resume
             scrolling = true      
             IsNotPause = true
             sounds['music']:play()
