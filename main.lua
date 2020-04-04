@@ -115,6 +115,7 @@ function love.load()
 
     -- initialize mouse input table
     love.mouse.buttonsPressed = {}
+
 end
 
 function love.resize(w, h)

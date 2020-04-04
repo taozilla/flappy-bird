@@ -32,7 +32,9 @@ function PlayState:update(dt)
     self.timer = self.timer + dt
 
     -- spawn a new pipe pair every second and a half
-    if self.timer > 2 then
+    --if self.timer > 2 then
+    -- change to random between 2 and 200
+    if self.timer > math.random( 2, 100 ) then
         -- modify the last Y coordinate we placed so pipe gaps aren't too far apart
         -- no higher than 10 pixels below the top edge of the screen,
         -- and no lower than a gap length (90 pixels) from the bottom
@@ -99,6 +101,12 @@ function PlayState:update(dt)
             score = self.score
         })
     end
+
+    -- tao add pause state
+    if love.keyboard.wasPressed('p') then
+        --gStateMachine:change('pause')
+    end
+
 end
 
 function PlayState:render()

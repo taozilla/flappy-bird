@@ -10,12 +10,19 @@
 
 ScoreState = Class{__includes = BaseState}
 
+local MEDAL = love.graphics.newImage('medal.png')
 --[[
     When we enter the score state, we expect to receive the score
     from the play state so we know what to render to the State.
 ]]
 function ScoreState:enter(params)
     self.score = params.score
+
+    -- use for set medal position
+    self.medal_W = MEDAL:getWidth()
+    self.medal_H = MEDAL:getHeight()
+    self.offset_H = 8
+    self.offset_Y = self.medal_W
 end
 
 function ScoreState:update(dt)
@@ -34,4 +41,23 @@ function ScoreState:render()
     love.graphics.printf('Score: ' .. tostring(self.score), 0, 100, VIRTUAL_WIDTH, 'center')
 
     love.graphics.printf('Press Enter to Play Again!', 0, 160, VIRTUAL_WIDTH, 'center')
+
+    -- add medal
+    -- score 0 get no medal
+    -- score 1 get 1 medal
+    -- score between 2 and 3 get 2 medal
+    -- score more than 4 get 3 medal
+    if self.score == 1 then
+        love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 + 0 , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
+
+    elseif self.score >= 2 and self.score <= 3 then
+        love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 + 0 , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
+        love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 - self.offset_Y , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
+
+    elseif self.score >= 4 then
+        love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 + 0 , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
+        love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 + self.offset_Y , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
+        love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 - self.offset_Y , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
+    end
+    -- end add medal
 end
