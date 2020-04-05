@@ -27,8 +27,8 @@ function PipePair:init(y)
     self.pipes = {
         ['upper'] = Pipe('top', self.y),
 
-        --['lower'] = Pipe('bottom', self.y + PIPE_HEIGHT + GAP_HEIGHT)
-        ['lower'] = Pipe('bottom', self.y + PIPE_HEIGHT + math.random( 80, 100 ))
+        --replace GAP_HEIGHT with random value
+        ['lower'] = Pipe('bottom', self.y + PIPE_HEIGHT + math.random( 80, 150 ))
     }
 
     -- whether this pipe pair is ready to be removed from the scene
