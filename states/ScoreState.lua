@@ -44,17 +44,17 @@ function ScoreState:render()
 
     -- add medal
     -- score 0 get no medal
-    -- score 1 get 1 medal
-    -- score between 2 and 3 get 2 medal
-    -- score more than 4 get 3 medal
-    if self.score == 1 then
+    -- score between 1 and 2 get 1 medal
+    -- score between 3 and 5 get 2 medal
+    -- score more than 6 get 3 medal
+    if self.score >= 1 and self.score <= 2 then
         love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 + 0 , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
 
-    elseif self.score >= 2 and self.score <= 3 then
+    elseif self.score >= 3 and self.score <= 5 then
         love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 + 0 , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
         love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 - self.offset_Y , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
 
-    elseif self.score >= 4 then
+    elseif self.score >= 6 then
         love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 + 0 , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
         love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 + self.offset_Y , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
         love.graphics.draw(MEDAL, VIRTUAL_WIDTH /2 - self.medal_W/2 - self.offset_Y , VIRTUAL_HEIGHT /2 - self.medal_H /2  - self.offset_H)
